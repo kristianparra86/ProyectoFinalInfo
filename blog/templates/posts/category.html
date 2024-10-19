@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<title> {% block title %} Categorías {% endblock title %} </title>
+<section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <br><br>
+            <h1 class="h2">Categorías</h1>
+            <p>
+                Desde aquí puedes elegir los artículos según la categoría que desees
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        {% for category in categorys %}
+        <div class="col-md-12 p-5">
+                <h4 class="text-center mt-3 mb-3">{{ category.name }}</h4>
+                 <p class="text-center"><a class="btn btn-warning" href="{% url 'apps.posts:post_category' pk=category.pk %}">Ingresar</a></p>
+                <br>
+                 <p class="text-center"><a class="btn btn-warning" href="{% url 'apps.posts:category_delete' pk=category.pk %}">Eliminar</a></p>
+        {% empty %}
+            <h3 class="text-center mt-3 mb-3">No hay categorías</h3>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+
+
+
+
+
